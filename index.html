@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Automaton Editor</title>
+  <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+  <header>
+    <h1>Automaton Editor</h1>
+    <div class="tools">
+      <button data-tool="select" title="選択/移動 (v)">選択</button>
+      <button data-tool="state" title="状態を追加 (s)">状態</button>
+      <button data-tool="transition" title="遷移を追加 (t)">遷移</button>
+      <button data-tool="delete" title="削除 (d)">削除</button>
+    </div>
+    <div class="tools">
+      <button id="importBtn">読込</button>
+      <button id="exportBtn">JSON保存</button>
+      <button id="exportSvg">SVG保存</button>
+      <button id="clear">全消去</button>
+      <input id="file" type="file" accept="application/json,.json" hidden>
+    </div>
+  </header>
+  <main>
+    <svg id="canvas" data-tool="select" aria-label="オートマトンのキャンバス">
+      <style id="svgStyle">
+        .edge .hit{fill:none;stroke:transparent;stroke-width:14}
+        .edge .line{fill:none;stroke:#444;stroke-width:1.6}
+        .edge.selected .line{stroke:#2563eb;stroke-width:2.4}
+        .edge .label{font:14px sans-serif;fill:#222;text-anchor:middle}
+        .node circle{fill:#fff;stroke:#333;stroke-width:1.8}
+        .node .inner{fill:none}
+        .node .start{stroke:#333;stroke-width:1.6}
+        .node .name{font:14px sans-serif;text-anchor:middle;fill:#111;pointer-events:none}
+        .node.selected circle{stroke:#2563eb;stroke-width:2.6}
+        .node.pending circle{stroke:#f59e0b;stroke-width:2.6}
+        .node.active circle{fill:#bbf7d0}
+      </style>
+      <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+          <path d="M0,0 L10,5 L0,10 z" fill="#444"/>
+        </marker>
+      </defs>
+      <g id="edges"></g>
+      <g id="nodes"></g>
+    </svg>
+    <aside>
+      <p id="hint"></p>
+      <section>
+        <h2>プロパティ</h2>
+        <div id="props"></div>
+      </section>
+      <section>
+        <h2>シミュレーション</h2>
+        <input id="input" type="text" placeholder="入力文字列 (例: abba)" autocomplete="off">
+        <div class="row">
+          <button id="run">実行</button>
+          <button id="stepBtn">ステップ</button>
+          <button id="reset">リセット</button>
+        </div>
+        <pre id="simResult"></pre>
+      </section>
+    </aside>
+  </main>
+  <script type="module" src="src/editor.js"></script>
+</body>
+</html>

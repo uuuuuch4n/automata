@@ -1,0 +1,28 @@
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, sans-serif; color: #1f2937; background: #f3f4f6; display: flex; flex-direction: column; height: 100vh; }
+header { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; padding: 8px 16px; background: #fff; border-bottom: 1px solid #d1d5db; }
+h1 { font-size: 18px; margin: 0; }
+h2 { font-size: 14px; margin: 0 0 8px; }
+.tools { display: flex; gap: 6px; }
+button { padding: 6px 12px; border: 1px solid #9ca3af; border-radius: 6px; background: #fff; cursor: pointer; font: inherit; }
+button:hover { background: #f3f4f6; }
+button.on { background: #2563eb; border-color: #2563eb; color: #fff; }
+main { flex: 1; display: flex; min-height: 0; }
+#canvas { flex: 1; min-width: 0; background: #fff; background-image: radial-gradient(#e5e7eb 1px, transparent 1px); background-size: 20px 20px; touch-action: none; }
+#canvas[data-tool="state"] { cursor: crosshair; }
+#canvas[data-tool="transition"] { cursor: pointer; }
+#canvas[data-tool="delete"] { cursor: not-allowed; }
+.node, .edge { cursor: pointer; }
+aside { width: 300px; padding: 12px; overflow: auto; background: #fff; border-left: 1px solid #d1d5db; }
+aside section { margin-bottom: 20px; }
+#hint { margin: 0 0 16px; padding: 8px; background: #eff6ff; border-radius: 6px; font-size: 13px; }
+.field { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin: 6px 0; font-size: 13px; }
+input[type="text"] { width: 100%; padding: 6px; border: 1px solid #9ca3af; border-radius: 6px; font: inherit; }
+.field input[type="text"] { width: 150px; }
+.info { font-size: 12px; color: #6b7280; margin: 0 0 8px; }
+.warn { font-size: 12px; color: #b45309; margin: 2px 0; }
+.row { display: flex; gap: 6px; margin: 8px 0; }
+pre { margin: 0; padding: 8px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; font-size: 12px; white-space: pre-wrap; min-height: 40px; }
+pre.ok { border-color: #16a34a; background: #f0fdf4; }
+pre.ng { border-color: #dc2626; background: #fef2f2; }
+@media (max-width: 700px) { main { flex-direction: column; } aside { width: auto; border-left: 0; border-top: 1px solid #d1d5db; max-height: 45vh; } }

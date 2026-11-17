@@ -1,0 +1,11 @@
+{
+  "name": "automaton-editor",
+  "version": "0.1.0",
+  "description": "Browser-based editor and simulator for DFA / NFA / ε-NFA",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "start": "npx --yes serve ."
+  }
+}
